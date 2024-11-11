@@ -118,7 +118,7 @@ export default function NewsList({ searchQuery }: NewsListProps) {
                   <td className="py-4 text-navy dark:text-gray-400">{(page - 1) * storiesPerPage + index + 1}</td>
                   <td className="py-4">
                     <div className="flex items-center gap-2">
-                      <button className="text-gray-400 hover:text-orange-500">
+                      <button className="dark:text-gray-400 text-navy hover:text-orange-500">
                         <ArrowUp className="w-4 h-4" />
                       </button>
                       <a
@@ -143,13 +143,13 @@ export default function NewsList({ searchQuery }: NewsListProps) {
                   <td className="py-4">
                     <button
                         onClick={() => fetchComments(story)}
-                        className="flex items-center gap-1 text-gray-300 hover:text-orange-500"
+                        className="flex items-center gap-1 dark:text-gray-300 text-navy hover:text-orange-500"
                     >
                       <MessageSquare className="w-4 h-4" />
                       <span>{story.descendants || 0}</span>
                     </button>
                   </td>
-                  <td className="hidden md:table-cell py-4 text-gray-400">
+                  <td className="hidden md:table-cell py-4 dark:text-gray-400 text-navy">
                     {Math.floor((Date.now() / 1000 - story.time) / 3600)}h ago
                   </td>
                 </tr>

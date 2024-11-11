@@ -8,6 +8,7 @@ import {
   Scale,
   Shield,
   Moon,
+    Sun,
   LogOut,
   MessageSquare,
 } from 'lucide-react';
@@ -56,8 +57,8 @@ export default function Sidebar() {
               onClick={toggleDarkMode}
               className="w-full flex items-center gap-3 px-3 py-2 rounded-lg mb-1  dark:hover:bg-gray-900 "
           >
-            <Moon className="w-5 h-5"/>
-            <span className="text-navy dark:text-gray-300">Dark mode</span>
+            {darkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            <span className="text-navy dark:text-gray-300">{darkMode ? 'Dark mode' : 'Light Mode'}</span>
             <div className={`ml-auto w-10 h-6 rounded-full p-1 ${darkMode ? 'bg-orange-500' : 'bg-gray-700'}`}>
               <div
                   className={`w-4 h-4 rounded-full bg-white transform transition-transform ${
