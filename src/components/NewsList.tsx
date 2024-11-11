@@ -98,11 +98,11 @@ export default function NewsList({ searchQuery }: NewsListProps) {
   }
 
   return (
-      <div className="p-4 md:p-6">
-        <div className="overflow-x-auto">
+      <div className="p-4 md:p-6 ">
+        <div className="overflow-x-auto ">
           <table className="w-full">
             <thead>
-            <tr className="text-left text-gray-400 text-sm">
+            <tr className="text-left text-navy dark:text-gray-400 text-sm">
               <th className="pb-4 font-medium">№</th>
               <th className="pb-4 font-medium">Title</th>
               <th className="hidden md:table-cell pb-4 font-medium">Source</th>
@@ -114,8 +114,8 @@ export default function NewsList({ searchQuery }: NewsListProps) {
             </thead>
             <tbody>
             {filteredStories.map((story, index) => (
-                <tr key={story.id} className="border-t border-gray-800 text-sm">
-                  <td className="py-4 text-gray-400">{(page - 1) * storiesPerPage + index + 1}</td>
+                <tr key={story.id} className="border-t border-gray-800 text-navy dark:text-gray-400">
+                  <td className="py-4 text-navy dark:text-gray-400">{(page - 1) * storiesPerPage + index + 1}</td>
                   <td className="py-4">
                     <div className="flex items-center gap-2">
                       <button className="text-gray-400 hover:text-orange-500">
@@ -125,17 +125,17 @@ export default function NewsList({ searchQuery }: NewsListProps) {
                           href={story.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-200 hover:text-orange-500 font-medium"
+                          className="text-navy dark:text-gray-200 hover:text-orange-500 font-medium"
                       >
                         {story.title}
                       </a>
                     </div>
                   </td>
-                  <td className="hidden md:table-cell py-4 text-gray-400">
+                  <td className="hidden md:table-cell py-4 text-navy dark:text-gray-400">
                     {story.url ? new URL(story.url).hostname : 'self'}
                   </td>
                   <td className="hidden md:table-cell py-4">
-                    <span className="text-gray-300">{story.by}</span>
+                    <span className="text-navy dark:text-gray-300">{story.by}</span>
                   </td>
                   <td className="py-4">
                     <span className="text-emerald-500">{story.score} points</span>

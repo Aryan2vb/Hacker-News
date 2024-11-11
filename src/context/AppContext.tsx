@@ -13,36 +13,39 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [darkMode, setDarkMode] = useState(() => {
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('darkMode');
-    return saved ? JSON.parse(saved) : true;
+    return saved ? JSON.parse(saved) : true; // default to dark mode if no saved setting
   });
+
   const [user, setUser] = useState<User | null>(() => {
     const saved = localStorage.getItem('user');
     return saved ? JSON.parse(saved) : null;
   });
 
   useEffect(() => {
+    console.log('Dark mode is', darkMode); // Check if this is being logged correctly
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
     document.documentElement.classList.toggle('dark', darkMode);
   }, [darkMode]);
 
   useEffect(() => {
+    // Sync user data with localStorage whenever it changes
     localStorage.setItem('user', JSON.stringify(user));
   }, [user]);
 
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+  const toggleDarkMode = () => setDarkMode((prevMode) => !prevMode);
 
   const login = async (email: string, password: string) => {
-    // Simulated login - replace with actual API call
+    // Simulate login action (replace with actual API)
     setUser({
-      name: email.split('@')[0],
+      name: email.split('@')[0], // Example name based on email
       email
     });
   };
 
   const register = async (name: string, email: string, password: string) => {
-    // Simulated registration - replace with actual API call
+    // Simulate registration action (replace with actual API)
     setUser({ name, email });
   };
 
@@ -51,16 +54,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AppContext.Provider value={{
-      darkMode,
-      toggleDarkMode,
-      user,
-      login,
-      register,
-      logout
-    }}>
-      {children}
-    </AppContext.Provider>
+      <AppContext.Provider value={{
+        darkMode,
+        toggleDarkMode,
+        user,
+        login,
+        register,
+        logout
+      }}>
+        {children}
+      </AppContext.Provider>
   );
 }
 

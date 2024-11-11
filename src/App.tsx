@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <AppProvider>
-      <div className="flex flex-col md:flex-row bg-gray-900 dark:bg-gray-950 text-gray-100 min-h-screen">
+      <div className="flex flex-col md:flex-row  bg-gray-300 dark:bg-gray-950 dark:text-gray-300 text-navy min-h-screen">
         <Sidebar />
         <div className="flex-1">
           <Header onSearch={setSearchQuery} />
