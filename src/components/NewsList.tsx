@@ -47,7 +47,7 @@ export function NewsList({ type }: NewsListProps) {
         setLoading(false);
 
         // Continue fetching the remaining slices in the background
-        for (let i = 2; i < storyIds.length; i += 10) {
+        for (let i = 1; i < storyIds.length; i += 10) {
           await fetchSlice(i);
         }
       } catch (error) {
